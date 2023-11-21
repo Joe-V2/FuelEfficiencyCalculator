@@ -1,108 +1,143 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Joe's Fuel Efficiency Calculator</title>
-        <link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
-        <link rel="stylesheet" type="text/css" href="calculator.css">
-        <script src="node_modules\jquery\dist\jquery.js"></script>
-        <script src="conversions.js"></script>
-        <script src="calculator.js"></script>
-    </head>
-
-    <body>
-        <header class="w3-container w3-card">
-            <h1>Joe's Fuel Efficiency Calculator</h1>
-        </header>
-        <div id="calculatorPanel" class="w3-container">
-            <div>
-                <h2>
-                    Fuel Efficiency
-                </h2>
-                <div id="mpgData">
-                    <h3>
-                        Miles per Gallon
-                    </h3>
-                    <label h3for="mpgMinBox">Worst:</label>
-                    <input type="text" id="mpgMinBox" class="w3-input" oninput="MpgUpdate()"/>
-
-                    <label for="mpgMaxBox">Best:</label>
-                    <input type="text" id="mpgMaxBox" class="w3-input" oninput="MpgUpdate()"/>
-                </div>
-                <div id="fuelPerKmData">
-                    <h3>
-                        Litres per 100km
-                    </h3>
-                    <label for="fuelPerKmMinBox">Worst:</label>
-                    <input type="text" id="fuelPerKmMinBox" class="w3-input" oninput="FuelPerKmUpdate()"/>
-
-                    <label for="fuelPerKmMinBox">Best:</label>
-                    <input type="text" id="fuelPerKmMaxBox" class="w3-input" oninput="FuelPerKmUpdate()"/>
-                </div>
-            </div>
-        <hr>
-            <div id="distanceData">
-                <h2>
-                    Distance
-                </h2>
-                <label for="milesBox">in Miles:</label>
-                <input type="text" id="milesBox" class="w3-input" oninput="MilesDistanceUpdate()"/>
-
-                <label for="kmBox">in Kilometres:</label>
-                <input type="text" id="kmBox" class="w3-input" oninput="KilometresDistanceUpdate()"/>
-            </div>
-        <hr>
-            <div id="efficiencyData">
-                <h2>
-                    Price
-                </h2>
-                <label for="pricePerLitreBox">per Litre:</label>
-                <input type="text" id="pricePerLitreBox" class="w3-input" oninput="PricePerLitreUpdate()"/>
-                
-                <label for="pricePerGallonBox">per Gallon:</label>
-                <input type="text" id="pricePerGallonBox" class="w3-input" oninput="PricePerGallonUpdate()"/>
-            </div>
-        <hr>
-                <div id="resultsPanel">
-                    <h2>
-                        Results
-                    </h2>
-                    <div id="pricePerDistancePanel">
-                        <h3>Price per Unit Distance</h3>
-                        <label for="pricePerMileBox">per Mile:</label>
-                        <input type="text" id="pricePerMileBox" class="w3-input" disabled="true"/>
-
-                        <label for="pricePerKmBox">per Kilometre:</label>
-                        <input type="text" id="pricePerKmBox" class="w3-input" disabled="true"/>
-                    </div>
-                    <div id="fuelUsedForJourneyPanel">
-                        <h3>Fuel usage for Journey</h3>
-                        <label for="fuelUsedForJourneyGallonsBox">in Gallons:</label>
-                        <input type="text" id="fuelUsedForJourneyGallonsBox" class="w3-input" disabled="true"/>
-
-                        <label for="fuelUsedForJourneyLitresBox">in Litres:</label>
-                        <input type="text" id="fuelUsedForJourneyLitresBox" class="w3-input" disabled="true"/>
-                    </div>
-                    <label for="totalCostBox">Cost of Journey as Total:</label>
-                    <input type="text" id="totalCostBox" class="w3-input" disabled="true"/>
-                </div>
-            </div>
-        </div>
-
-
-        <div id="donationBox">
-            <label>If this website has helped you, feel free to donate - but don't feel pressured. I just do this for fun!</label>
-            <form action="https://www.paypal.com/donate" method="post" target="_top">
-                <input type="hidden" name="hosted_button_id" value="AZ5E7ZXYNQXAN" />
-                <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif" name="submit" title="Click here to make a donation!" alt="Donate with PayPal button" />
-                <img alt="" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1" />
-            </form>
-        </div>
-
-
-        <footer>
-            © Joe Greaney, 2023
-        </footer>
-    </body>
-    <meta info="A JavaScript-based calculator for finding information about how much a journey should cost, according to cost-per-litre, miles of journey, and mpg of vehicle."/>
+	<head>
+		<title>Joe's Fuel Efficiency Calculator</title>
+		<link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+		<link rel="stylesheet" type="text/css" href="calculator.css">
+		<link rel="stylesheet" type="text/css" href="responsiveness.css">
+		<script src="node_modules\jquery\dist\jquery.js"></script>
+		<script src="conversions.js"></script>
+		<script src="calculator.js"></script>
+		<meta content="A calculator for estimating fuel usage, pricing, and range, in both metric and british imperial units." name="description">
+		<meta content="Joe's Fuel Efficiency Calculator" property="og:title">
+		<meta content="A calculator for estimating fuel usage, pricing, and range, in both metric and british imperial units." property="og:description">
+		<meta content="Joe's Fuel Efficiency Calculator" property="twitter:title">
+		<meta content="A calculator for estimating fuel usage, pricing, and range, in both metric and british imperial units." property="twitter:description">
+		<meta property="og:type" content="website">
+		<meta content="summary_large_image" name="twitter:card">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+	</head>
+	<body>
+		<header class="w3-container w3-card">
+			<h1>Joe's Fuel Efficiency Calculator</h1>
+		</header>
+		<div class="flex-container-h-wide" id="calculatorPanel">
+			<div class="flex-item">
+				<div class="flex-container-v">
+					<div class="flex-item">
+						<h2>
+							Fuel Efficiency
+						</h2>
+						<div class="flex-container-h-narrow">
+							<div class="flex-item" id="mpgData">
+								<h3>
+									Miles per Gallon
+								</h3>
+								<div class="flex-container-v">
+									<div class="flex-item">
+										<label for="mpgMaxBox">Best:</label>
+										<input type="text" id="mpgMaxBox"  oninput="MpgUpdate()"/>
+									</div>
+									<div class="flex-item">
+										<label h3for="mpgMinBox">Worst:</label>
+										<input type="text" id="mpgMinBox"  oninput="MpgUpdate()"/>
+									</div>
+								</div>
+							</div>
+							<div class="flex-item" id="fuelPerKmData">
+								<h3>
+									Litres per 100km
+								</h3>
+								<div class="flex-container-v">
+									<div class="flex-item">
+										<label for="fuelPerKmMinBox">Best:</label>
+										<input type="text" id="fuelPerKmMaxBox"  oninput="FuelPerKmUpdate()"/>
+									</div>
+									<div class="flex-item">
+										<label for="fuelPerKmMinBox">Worst:</label>
+										<input type="text" id="fuelPerKmMinBox"  oninput="FuelPerKmUpdate()"/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="flex-item" id="distanceData">
+						<h2>
+							Distance
+						</h2>
+						<div class="flex-container-v">
+							<div class="flex-item">
+								<label for="milesBox">in Miles:</label>
+								<input type="text" id="milesBox"  oninput="MilesDistanceUpdate()"/>
+							</div>
+							<div class="flex-item">
+								<label for="kmBox">in Kilometres:</label>
+								<input type="text" id="kmBox"  oninput="KilometresDistanceUpdate()"/>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="flex-item" id="efficiencyData">
+						<h2>
+							Price
+						</h2>
+						<div class="flex-container-v">
+							<div class="flex-item">
+								<label for="pricePerLitreBox">per Litre:</label>
+								<input type="text" id="pricePerLitreBox"  oninput="PricePerLitreUpdate()"/>
+							</div>
+							<div class="flex-item">
+								<label for="pricePerGallonBox">per Gallon:</label>
+								<input type="text" id="pricePerGallonBox"  oninput="PricePerGallonUpdate()"/>
+							</div>
+						</div>
+					</div>
+					<hr>
+				</div>
+			</div>
+			<div class="flex-item"id="resultsPanel">
+				<h2>
+					Results
+				</h2>
+				<div class="flex-item" id="pricePerDistancePanel">
+					<h3>Price per Unit Distance</h3>
+					<div class="flex-container-h-narrow">
+						<div class="flex-item">
+							<label for="pricePerMileBox">per Mile:</label>
+							<input type="text" id="pricePerMileBox"  disabled="true"/>
+						</div>
+						<div class="flex-item">
+							<label for="pricePerKmBox">per Kilometre:</label>
+							<input type="text" id="pricePerKmBox"  disabled="true"/>
+						</div>
+					</div>
+				</div>
+				<div class="flex-item" id="fuelUsedForJourneyPanel">
+					<h3>Fuel usage for Journey</h3>
+					<div class="flex-container-h-narrow">
+						<div class="flex-item">
+							<label for="fuelUsedForJourneyGallonsBox">in Gallons:</label>
+							<input type="text" id="fuelUsedForJourneyGallonsBox"  disabled="true"/>
+						</div>
+						<div class="flex-item">
+							<label for="fuelUsedForJourneyLitresBox">in Litres:</label>
+							<input type="text" id="fuelUsedForJourneyLitresBox"  disabled="true"/>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="flex-item" id="totalCostPanel">
+					<h2 for="totalCostBox">Cost of Journey as Total:</h2>
+					<input type="text" id="totalCostBox"  disabled="true"/>
+				</div>
+				<hr>
+			</div>
+		</div>
+		</div>
+		<footer>       
+			© Joe Greaney, 2023
+		</footer>
+	</body>
 </html>

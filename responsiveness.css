@@ -39,13 +39,6 @@
     align-items: left;
   }
 
-  #totalCostPanel{
-    position: relative;
-    height: 15%;
-    top:84%;
-    right:1%;
-  }
-
   #resultsPanel
   {
     border-left: 1px solid white;

@@ -51,6 +51,7 @@ input
 #resultsPanel input
 {
     color:#ffffff;
+    -webkit-text-fill-color: #ffffff;
     background: rgb(44, 44, 44);
     border-color: rgb(44, 44, 44);
 }

@@ -23,9 +23,9 @@ function ConvertMoneyPerVolume(pricePerUnit, convertingToGallons)
     const conversionFactor = 4.54609;
     var result;
     if(convertingToGallons == true)
-        result = pricePerUnit * conversionFactor;
-    else
         result = pricePerUnit / conversionFactor;
+    else
+        result = pricePerUnit * conversionFactor;
 
     return result;
 }

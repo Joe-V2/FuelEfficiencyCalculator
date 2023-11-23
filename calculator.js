@@ -20,6 +20,8 @@ function MpgUpdate()
         maxLitresPerKm = TruncateDecimalPlaces(maxLitresPerKm, 3);
         $("#fuelPerKmMaxBox").val(maxLitresPerKm); 
     }
+
+    UpdateResults();
 }
 
 function FuelPerKmUpdate()
@@ -44,6 +46,8 @@ function FuelPerKmUpdate()
         maxMpg = TruncateDecimalPlaces(maxMpg, 3);
         $("#mpgMaxBox").val(maxMpg);
     }
+
+    UpdateResults();
 }
 
 function MilesDistanceUpdate()
@@ -102,9 +106,9 @@ function PricePerGallonUpdate()
         $("#pricePerLitreBox").val("");
     else
     {
-        var pricePerLitre = ConvertMoneyPerVolume(pricePerGallon);
+        var pricePerLitre = ConvertMoneyPerVolume(pricePerGallon, false);
         pricePerLitre = TruncateDecimalPlaces(pricePerLitre, 3);
-        $("#pricePerLitreBox").val(pricePerGallon);
+        $("#pricePerLitreBox").val(pricePerLitre);
     }
 
     UpdateResults();

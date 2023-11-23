@@ -1,5 +1,6 @@
 .flex-container-h-wide {
     display: flex;
+    flex: 1 0 auto;
     flex-direction: row;
     font-size: 30px;
     text-align: center;
@@ -7,6 +8,7 @@
   
   .flex-container-h-narrow {
     display: flex;
+    flex: 1 0 auto;
     flex-direction: row;
     font-size: 30px;
     text-align:left;
@@ -15,6 +17,7 @@
   
   .flex-container-v {
     display: flex;
+    flex: 1 0 auto;
     flex-direction: column;
     font-size: 30px;
     text-align: center;
@@ -28,6 +31,7 @@
 
   .flex-item{
     margin-top: auto;
+    flex: 1 0 auto;
     margin-bottom:auto;
     flex: 50%;
     height:fit-content;
@@ -55,6 +59,11 @@
     .flex-container-h-wide {
       flex-direction: column;
     }
+    
+    #resultsPanel
+    {
+      border-left: 0px;
+    }
     #donationBox{
         width:100%;
         left:0;
@@ -67,6 +76,12 @@
   @media (max-width: 600px) {
     .flex-container-h-narrow {
       flex-direction: column;
+    };
+  }
+
+  @media (max-width: 600px) {
+    h1{
+      font-size: 6vw;
     }
   }
 

@@ -130,6 +130,7 @@ function GetPricePerMile()
     var minMpgBoxValue = $("#mpgMinBox").val();
     var maxMpgBoxValue = $("#mpgMaxBox").val();
     var pricePerGallon = $("#pricePerGallonBox").val();
+    var mileDistance = $("#milesBox").val();
 
     var result = "";
 
@@ -138,7 +139,7 @@ function GetPricePerMile()
         
         if(minMpgBoxValue != "")
         {
-            var maxPricePerMile = (minMpgBoxValue / 1.0) * pricePerGallon;
+            var maxPricePerMile = (mileDistance / maxMpgBoxValue) * pricePerGallon;
             result += TruncateDecimalPlaces(maxPricePerMile, 2);
         }
         if(maxMpgBoxValue != "")
@@ -146,7 +147,7 @@ function GetPricePerMile()
             if(result != "")
                 result += " - "
 
-            var minPricePerMile = (maxMpgBoxValue / 1.0) * pricePerGallon;
+            var minPricePerMile = (mileDistance / minMpgBoxValue) * pricePerGallon;
             result += TruncateDecimalPlaces(minPricePerMile, 2);
         }
     }
@@ -246,7 +247,7 @@ function GetTotalCost()
         if(minLitreBoxValue != "")
         {
             var maxPricePerKm = (maxLitreBoxValue / 100.0) * pricePerLitre;
-            result += TruncateDecimalPlaces((maxPricePerKm * pricePerLitre) * kmDistance, 2);
+            result += TruncateDecimalPlaces(maxPricePerKm * kmDistance, 2);
         }
         if(maxLitreBoxValue != "")
         {   
@@ -254,7 +255,7 @@ function GetTotalCost()
                 result += " - "
 
             var minPricePerKm = (minLitreBoxValue / 100.0) * pricePerLitre;
-            result += TruncateDecimalPlaces((minPricePerKm * pricePerLitre) * kmDistance, 2);
+            result += TruncateDecimalPlaces(minPricePerKm * kmDistance, 2);
         }
     }
 

@@ -130,7 +130,6 @@ function GetPricePerMile()
     var minMpgBoxValue = $("#mpgMinBox").val();
     var maxMpgBoxValue = $("#mpgMaxBox").val();
     var pricePerGallon = $("#pricePerGallonBox").val();
-    var mileDistance = $("#milesBox").val();
 
     var result = "";
 
@@ -139,7 +138,7 @@ function GetPricePerMile()
         
         if(minMpgBoxValue != "")
         {
-            var maxPricePerMile = (mileDistance / maxMpgBoxValue) * pricePerGallon;
+            var maxPricePerMile = (1.0 / maxMpgBoxValue) * pricePerGallon;
             result += TruncateDecimalPlaces(maxPricePerMile, 2);
         }
         if(maxMpgBoxValue != "")
@@ -147,7 +146,7 @@ function GetPricePerMile()
             if(result != "")
                 result += " - "
 
-            var minPricePerMile = (mileDistance / minMpgBoxValue) * pricePerGallon;
+            var minPricePerMile = (1.0 / minMpgBoxValue) * pricePerGallon;
             result += TruncateDecimalPlaces(minPricePerMile, 2);
         }
     }
